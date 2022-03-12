@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="A:/legends Of Kos/DataStore/database_editor.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2568"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,12:mainAchievements"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Achievements" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="43"/><column index="3" value="67"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Editor_Config" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="132"/><column index="3" value="112"/><column index="4" value="103"/><column index="5" value="156"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Object_Association" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="89"/><column index="3" value="89"/><column index="4" value="133"/><column index="5" value="175"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="sqlite_sequence" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="43"/><column index="2" value="40"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="Test.sql">CREATE TABLE Global_Save (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;options&quot; INTEGER NOT NULL,
+  &quot;achievements&quot; INTEGER NOT NULL,
+  &quot;emeralds_collected&quot; INTEGER,
+  &quot;emeralds_enhanced&quot; INTEGER,
+  PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+
+CREATE TABLE &quot;Save_File&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;character_name&quot; varchar(50) NOT NULL,
+  &quot;scene_name&quot; varchar(50),
+  &quot;emeralds_collected&quot; INTEGER,
+  &quot;emeralds_enhanced&quot; INTEGER,
+  PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+
+CREATE TABLE &quot;Scene&quot; (
+  &quot;id&quot; INTEGER  NOT NULL,
+  &quot;scene_name&quot; varchar(100) NOT NULL,
+  &quot;scene_use&quot; enum,
+  &quot;scene_location&quot; varchar(1000) NOT NULL,
+  &quot;scene_thumbnail_location&quot; varchar(3500),
+  &quot;checkpoINTEGER_num&quot; INTEGER NOT NULL,
+  &quot;mini_bosses_defeated&quot; INTEGER NOT NULL,
+  &quot;bosses_defeated&quot; INTEGER NOT NULL,
+  &quot;has_liquid&quot; boolean NOT NULL,
+  &quot;liquid_type&quot; INTEGER,
+  &quot;water_level&quot; NUMERIC,
+  PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+
+CREATE TABLE &quot;Object_Association&quot; (
+  &quot;id&quot; INTEGER,
+  &quot;scene_name&quot; varchar(100),
+  &quot;folder_name&quot; varchar(100),
+  &quot;object_scene_path&quot; varchar(3500),
+  &quot;object_custom_thumbnail&quot; varchar(3500),
+  PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+
+CREATE TABLE &quot;Options&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;controller_settings&quot; INTEGER NOT NULL,
+  &quot;graphic_options&quot; INTEGER NOT NULL,
+  &quot;sound_options&quot; INTEGER NOT NULL,
+  &quot;experiemental_options&quot; INTEGER NOT NULL,
+  PRIMARY KEY(&quot;id&quot;)
+);
+
+CREATE TABLE &quot;Controller_Settings&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;ui_up&quot; varchar(30) NOT NULL,
+  &quot;ui_left&quot; varchar(30) NOT NULL,
+  &quot;ui_down&quot; varchar(30) NOT NULL,
+  &quot;ui_right&quot; varchar(30) NOT NULL,
+  &quot;ui_action_normal&quot; varchar(30) NOT NULL,
+  &quot;ui_action_charge&quot; varchar(30) NOT NULL,
+  &quot;ui_action_special&quot; varchar(30) NOT NULL,
+  &quot;ui_accept&quot; varchar(30) NOT NULL,
+  &quot;ui_select&quot; varchar(30) NOT NULL,
+  &quot;ui_cancle&quot; varchar(30) NOT NULL,
+  &quot;ui_home&quot; varchar(30) NOT NULL,
+  &quot;ui_end&quot; varchar(30) NOT NULL,
+  PRIMARY KEY(&quot;id&quot;)
+);
+
+CREATE TABLE &quot;Graphic_Options&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;resolutuion&quot; NUMERIC NOT NULL,
+  &quot;fullscreen&quot; boolean NOT NULL,
+  &quot;no_movie&quot; boolean NOT NULL,
+  &quot;debug&quot; boolean NOT NULL,
+  &quot;accessability_shaders&quot; boolean NOT NULL,
+  &quot;vsync&quot; boolean NOT NULL,
+  PRIMARY KEY(&quot;id&quot;)
+);
+
+CREATE TABLE &quot;Achievements&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;name&quot; NUMERIC NOT NULL,
+  &quot;complete&quot; boolean NOT NULL,
+  PRIMARY KEY(&quot;id&quot;)
+);
+
+CREATE TABLE &quot;Sound_Options&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;sfx&quot; NUMERIC NOT NULL,
+  &quot;bgm&quot; NUMERIC NOT NULL,
+  &quot;sountrack&quot; enum NOT NULL,
+  &quot;vsync&quot; boolean NOT NULL,
+  PRIMARY KEY(&quot;id&quot;)
+);
+
+CREATE TABLE &quot;Experiemental_Options&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;op_player&quot; boolean NOT NULL,
+  &quot;physics_modification&quot; INTEGER NOT NULL,
+  PRIMARY KEY(&quot;id&quot;)
+);
+
+CREATE TABLE &quot;Physics_Modification&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;character_name&quot; varchar(100) NOT NULL,
+  &quot;JMP&quot; NUMERIC NOT NULL,
+  &quot;FALL&quot; NUMERIC NOT NULL,
+  &quot;AIR&quot; NUMERIC NOT NULL,
+  &quot;FRC&quot; NUMERIC NOT NULL,
+  &quot;GRV&quot; NUMERIC NOT NULL,
+  &quot;WATER_ACEND_STR&quot; NUMERIC NOT NULL,
+  &quot;WEIGHT&quot; NUMERIC NOT NULL,
+  &quot;MASS&quot; NUMERIC NOT NULL,
+  &quot;TOP&quot; NUMERIC NOT NULL,
+  &quot;TOPROLL&quot; NUMERIC NOT NULL,
+  &quot;MAXGSP&quot; NUMERIC NOT NULL,
+  &quot;ACC&quot; NUMERIC NOT NULL,
+  &quot;DEC&quot; NUMERIC NOT NULL,
+  &quot;ROLLDEC&quot; NUMERIC NOT NULL,
+  &quot;SLP&quot; NUMERIC NOT NULL,
+  &quot;SLPUP&quot; NUMERIC NOT NULL,
+  &quot;SLPDOWN&quot; NUMERIC NOT NULL,
+  &quot;SLPROLLUP&quot; NUMERIC NOT NULL,
+  &quot;SLPROLLDOWN&quot; NUMERIC NOT NULL,
+  PRIMARY KEY(&quot;id&quot;)
+);
+
+CREATE TABLE &quot;Character_Level_Routes&quot; (
+  &quot;character_name&quot; varchar(50) NOT NULL,
+  &quot;zone_one&quot; INTEGER NOT NULL,
+  &quot;zone_two&quot; INTEGER NOT NULL,
+  &quot;zone_three&quot; INTEGER NOT NULL,
+  &quot;zone_four&quot; INTEGER NOT NULL,
+  &quot;zone_five&quot; INTEGER NOT NULL,
+  &quot;zone_six&quot; INTEGER NOT NULL,
+  &quot;zone_seven&quot; INTEGER NOT NULL,
+  &quot;zone_eight&quot; INTEGER NOT NULL,
+  &quot;zone_nine&quot; INTEGER NOT NULL,
+  PRIMARY KEY(&quot;character_name&quot;)
+);
+
+CREATE TABLE &quot;Character&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;character_name&quot; varchar(50) NOT NULL,
+  &quot;character_state&quot; varchar(50) NOT NULL,
+  PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+
+CREATE TABLE &quot;Character_State&quot; (
+  &quot;character_state&quot; varchar(50) NOT NULL,
+  &quot;LevelPart&quot; NUMERIC NOT NULL,
+  &quot;Time&quot; NUMERIC NOT NULL,
+  &quot;CheckpoINTEGERNum&quot; INTEGER NOT NULL,
+  &quot;Rings&quot; INTEGER NOT NULL,
+  &quot;StateType&quot; INTEGER NOT NULL,
+  &quot;Form&quot; enum NOT NULL,
+  &quot;ShieldType&quot; INTEGER NOT NULL,
+  &quot;Charge&quot; NUMERIC NOT NULL,
+  &quot;gsp&quot; NUMERIC NOT NULL,
+  &quot;velocity&quot; NUMERIC NOT NULL,
+  PRIMARY KEY(&quot;character_state&quot;)
+);
+
+CREATE TABLE &quot;Emeralds_Unlocked&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;character_name&quot; varchar(50) NOT NULL,
+  &quot;darkBlue&quot; INTEGER NOT NULL,
+  &quot;blue&quot; INTEGER NOT NULL,
+  &quot;red&quot; INTEGER NOT NULL,
+  &quot;purple&quot; INTEGER NOT NULL,
+  &quot;white&quot; INTEGER NOT NULL,
+  &quot;green&quot; INTEGER NOT NULL,
+  &quot;yellow&quot; INTEGER NOT NULL,
+  &quot;AllEmeraldsCollected&quot; INTEGER NOT NULL,
+  PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+
+CREATE TABLE &quot;Emeralds_Enhanced&quot; (
+  &quot;id&quot; INTEGER NOT NULL,
+  &quot;character_name&quot; varchar(50) NOT NULL,
+  &quot;darkBlue&quot; INTEGER NOT NULL,
+  &quot;blue&quot; INTEGER NOT NULL,
+  &quot;red&quot; INTEGER NOT NULL,
+  &quot;purple&quot; INTEGER NOT NULL,
+  &quot;white&quot; INTEGER NOT NULL,
+  &quot;green&quot; INTEGER NOT NULL,
+  &quot;yellow&quot; INTEGER NOT NULL,
+  &quot;AllEmeraldsEnhanced&quot; INTEGER NOT NULL,
+  PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+</sql><sql name="&amp;Quick Integrity Check">PRAGMA quick_check;</sql><current_tab id="1"/></tab_sql></sqlb_project>

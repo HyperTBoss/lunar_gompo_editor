@@ -3,6 +3,7 @@ extends EditorPlugin
 
 
 func _enter_tree():
+	print("Heat a tree")
 	pass
 
 

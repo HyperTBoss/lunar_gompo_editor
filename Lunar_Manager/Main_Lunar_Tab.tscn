@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/Lunar_Gompo_Editor/Lunar_Manager/Main_Lunar_Tab_Contact.gd" type="Script" id=1]
+
+[node name="Main_Lunar_Tab" type="Control"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 692.0
+margin_bottom = 17.0

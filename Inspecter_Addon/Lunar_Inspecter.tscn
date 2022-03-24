@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/Lunar_Gompo_Editor/Inspecter_Addon/Lunar_Inspecter.gd" type="Script" id=1]
+
+[node name="Lunar Inspecter" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 415.0
+margin_bottom = 598.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+margin_right = 415.0
+margin_bottom = 598.0
+size_flags_vertical = 3
+text = "Inspecterr"
+scroll_active = false
